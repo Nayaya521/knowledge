@@ -12,14 +12,15 @@ import java.util.Date;
 @Data
 @ToString
 public class Answer {
-    long aid;//答案的ID
-    long qid;//问题Id
-    String version;//版本
-    String answerName;//用户名称
-    String answerFileUuid;//回答内容
+   private long aid;//答案的ID
+    private long qid;//问题Id
+    private String version;//版本
+   private String answerName;//用户名称
+    private String answerFileUuid;//回答内容
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    Date answerTime;//回答时间
-    int answerApplaud;//赞同数
-    String answerContent;//回答的内容
+    private Date answerTime;//回答时间
+    private int answerApplaud;//赞同数
+   private String answerContent;//回答的内容
+    private String dateDifference;
 
 }

@@ -16,7 +16,7 @@ public class MysqlAnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public int deleteAnswer(int aid) {
+    public int deleteAnswer(long aid) {
         return 0;
     }
 
@@ -26,7 +26,7 @@ public class MysqlAnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public List<Map<String, Object>> selectAllAnswer() {
+    public List<Map<String, Object>> selectAllAnswer(long qid) {
         return null;
     }
 

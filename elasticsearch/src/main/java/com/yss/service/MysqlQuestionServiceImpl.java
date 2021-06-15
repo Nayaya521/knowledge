@@ -20,7 +20,7 @@ public class MysqlQuestionServiceImpl implements QuestionService{
     @Override
     public List<Map<String, Object>> selectAll() throws IOException {
         try {
-           return TimeDifferenceUtils.listAdd(dao.selectAll());
+           return TimeDifferenceUtils.listAdd(dao.selectAll(),"questionTime");
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -30,7 +30,7 @@ public class MysqlQuestionServiceImpl implements QuestionService{
     @Override
     public List<Map<String, Object>> selectByKeyWord(String keyWord){
         try {
-            return TimeDifferenceUtils.listAdd(dao.selectByKeyWord(keyWord));
+            return TimeDifferenceUtils.listAdd(dao.selectByKeyWord(keyWord),"questionTime");
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -42,7 +42,7 @@ public class MysqlQuestionServiceImpl implements QuestionService{
     @Override
     public List<Map<String, Object>> selectByPlatform(String platformname){
         try {
-            TimeDifferenceUtils.listAdd(dao.selectByPlatform(platformname));
+            TimeDifferenceUtils.listAdd(dao.selectByPlatform(platformname),"questionTime");
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class MysqlQuestionServiceImpl implements QuestionService{
     @Override
     public List<Map<String, Object>> selectQuestionByUserName(String questionername) {
         try {
-          return   TimeDifferenceUtils.listAdd(dao.selectQuestionByUserName(questionername));
+          return   TimeDifferenceUtils.listAdd(dao.selectQuestionByUserName(questionername),"questionTime");
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -71,7 +71,7 @@ public class MysqlQuestionServiceImpl implements QuestionService{
     @Override
     public Map<String, Object> selectByQid(long qid) {
         try {
-            return  TimeDifferenceUtils.mapAdd(dao.selectByQid(qid));
+            return  TimeDifferenceUtils.mapAdd(dao.selectByQid(qid),"questionTime");
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -116,7 +116,7 @@ public class MysqlQuestionServiceImpl implements QuestionService{
     @Override
     public List<Map<String, Object>> selectByYear(int yearNum){
         try {
-            return TimeDifferenceUtils.listAdd(dao.selectByYear(yearNum));
+            return TimeDifferenceUtils.listAdd(dao.selectByYear(yearNum),"questionTime");
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -128,7 +128,7 @@ public class MysqlQuestionServiceImpl implements QuestionService{
     @Override
     public List<Map<String, Object>> selectByMonth(int monthNum){
         try {
-            return TimeDifferenceUtils.listAdd(dao.selectByMonth(monthNum));
+            return TimeDifferenceUtils.listAdd(dao.selectByMonth(monthNum),"questionTime");
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {

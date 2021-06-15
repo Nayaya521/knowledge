@@ -79,7 +79,7 @@ public class EsQuestionServiceImpl implements QuestionService {
             System.out.println("这是我的首页");
             for (SearchHit hit : response.getHits().getHits()) {
                 try {
-                    list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap()));
+                    list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap(),"questioinTime"));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -98,7 +98,7 @@ public class EsQuestionServiceImpl implements QuestionService {
                     System.out.println("下一页");
                     for (SearchHit hit : hits) {
                         try {
-                            list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap()));
+                            list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap(),"questionTime"));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -184,7 +184,7 @@ public class EsQuestionServiceImpl implements QuestionService {
                 }
 
                 try {
-                    list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap()));
+                    list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap(),"questionTime"));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -218,7 +218,7 @@ public class EsQuestionServiceImpl implements QuestionService {
             response = restHighLevelClient.search(request, RequestOptions.DEFAULT);
             //4.输出结果
             for (SearchHit hit : response.getHits().getHits()) {
-                    list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap()));
+                    list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap(),"questionTime"));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -252,7 +252,7 @@ public class EsQuestionServiceImpl implements QuestionService {
             response = restHighLevelClient.search(request, RequestOptions.DEFAULT);
             List<Question> questionResult=new ArrayList<>();
             for (SearchHit hit : response.getHits()) {
-                list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap()));
+                list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap(),"questionTime"));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -324,7 +324,7 @@ public class EsQuestionServiceImpl implements QuestionService {
             GetRequest request=new GetRequest(index_name,index_type,String.valueOf(qid));
             //2.执行查询
             response = restHighLevelClient.get(request, RequestOptions.DEFAULT);
-            map=TimeDifferenceUtils.mapAdd(response.getSourceAsMap());
+            map=TimeDifferenceUtils.mapAdd(response.getSourceAsMap(),"questionTime");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -412,7 +412,7 @@ public class EsQuestionServiceImpl implements QuestionService {
         SearchResponse response = restHighLevelClient.search(request, RequestOptions.DEFAULT);
         List<Question> questionResult=new ArrayList<>();
         for (SearchHit hit : response.getHits()) {
-           list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap()));
+           list.add(TimeDifferenceUtils.mapAdd(hit.getSourceAsMap(),"questionTime"));
         }
         return list;
     }
