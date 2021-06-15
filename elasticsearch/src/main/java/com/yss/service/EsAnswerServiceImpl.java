@@ -21,6 +21,9 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.SortBuilder;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -124,6 +127,7 @@ public class EsAnswerServiceImpl implements AnswerService {
         SearchSourceBuilder builder=new SearchSourceBuilder();
         builder.from(0);
         builder.size(100);
+        builder.sort(SortBuilders.fieldSort("answerApplaud").order(SortOrder.DESC));
         builder.query(QueryBuilders.termsQuery("qid",String.valueOf(qid)));
         request.source(builder);
         //3.执行查询

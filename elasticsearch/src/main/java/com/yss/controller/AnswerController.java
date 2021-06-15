@@ -64,7 +64,7 @@ public class AnswerController {
 
     //5.根据用户查找所回答的答案
     @GetMapping("/selectAnswerByUserName")
-    public RetResult<List<Map<String, Object>>> selectQuestionByUserName(@RequestParam("answerName")String answerName) throws IOException, ParseException {
+        public RetResult<List<Map<String, Object>>> selectQuestionByUserName(@RequestParam("answerName")String answerName) throws IOException, ParseException {
         AnswerService service = this.service.getAnswerService();
         List<Map<String, Object>> list = service.selectAnswerByUser(answerName);
         if(list !=null){
