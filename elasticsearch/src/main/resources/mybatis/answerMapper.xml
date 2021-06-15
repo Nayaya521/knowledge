@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.IAnswerDao">
+    <!--1.增加一个问题的答案-->
+     <insert id="addAnswer" keyProperty="aid" useGeneratedKeys="true">
+         insert into answer values (null,#{qid},#{version},#{answerName},now(),#{answerFileUuid},#{answerApplaud},#{answerContent})
+     </insert>
+    <!--2.删除答案-->
+    <delete id="deleteAnswer" parameterType="java.lang.Long">
+        delete from answer where aid=#{aid}
+    </delete>
+    <!--3.更新回答-->
+    <update id="updateAnswer" parameterType="Answer">
+        update answer set answerContent=#{answerContent},answerTime=now() where aid=#{aid}
+    </update>
+  <!--  4.查找一个问题的所有答案-->
+    <select id="selectAllAnswer" parameterType="java.lang.Long" resultType="java.util.HashMap">
+        select aid,qid,version,answerName,DATE_FORMAT(answerTime,'%Y-%m-%d %H:%i:%s')as answerTime,answerFileUuid,answerApplaud,answerContent from answer where qid=#{qid} order by answerApplaud desc
+    </select>
+   <!-- 5.根据用户查找所回答的答案-->
+    <select id="selectAnswerByUser"  parameterType="java.lang.String" resultType="java.util.HashMap">
+        select questionerName,questionTitle,aid,a.qid,version,answerName,DATE_FORMAT(answerTime,'%Y-%m-%d %H:%i:%s')as answerTime,answerFileUuid,answerApplaud,answerContent from question q,answer a where a.answerName=#{username} and a.qid=q.qid
+    </select>
+  <!--  6.更新一个问题的答案的赞同数-->
+    <update id="updateApplaud">
+        update answer set answerApplaud=answerApplaud+1 where aid=#{aid}
+    </update>
+</mapper>

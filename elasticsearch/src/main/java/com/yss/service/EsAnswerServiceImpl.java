@@ -178,4 +178,25 @@ public class EsAnswerServiceImpl implements AnswerService {
         }
         return list;
     }
+
+    @Override
+    public int updateApplaud(long aid,int applaudNum) {
+        //1.创建一个Map,指定要修改的内容
+        Map<String,Object> doc=new HashMap<>();
+        doc.put("answerApplaud",String.valueOf(applaudNum+1));
+        //2.创建request对象，封装数据
+        UpdateRequest request=new UpdateRequest(index_name,index_type,String.valueOf(aid));
+        request.doc(doc);
+        //3.创建client对象执行
+        UpdateResponse response = null;
+        try {
+            response = restHighLevelClient.update(request, RequestOptions.DEFAULT);
+            System.out.println(response.getResult().toString());
+            return response.status().getStatus();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

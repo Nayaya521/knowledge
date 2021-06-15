@@ -32,7 +32,7 @@
         insert into question values (null,#{questionTitle},#{questionDesc},#{qType},#{platformName},#{questionTags},#{questionerName},now(),#{questionFileUuid})
     </insert>
    <!-- 8.删除一条问题文档-->
-    <delete id="deleteQuestionDoc" parameterType="java.lang.Integer">
+    <delete id="deleteQuestionDoc" parameterType="java.lang.Long">
         delete from question where qid=#{qid}
     </delete>
   <!-- 9.修改一条问题文档-->

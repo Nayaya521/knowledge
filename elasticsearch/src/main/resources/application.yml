@@ -18,7 +18,7 @@ mybatis:
   mapper-locations: classpath:/mybatis/*.xml   #   xml文件
 
 elasticsearch:
-  started: true
+  started: false
   index:
     shards: 3
     replicas: 2
