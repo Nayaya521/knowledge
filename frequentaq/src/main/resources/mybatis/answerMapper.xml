@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.IAnswerDao">
+    <!--1.增加一个问题的答案-->
+     <insert id="addAnswer" keyProperty="aid" useGeneratedKeys="true">
+         insert into answer values (null,#{qid},#{vid},#{uName},#{answerContent},now())
+     </insert>
+    <!--2.删除答案-->
+    <delete id="deleteAnswer">
+        delete from answer where aid=#{aid}
+    </delete>
+    <!--3.根据问题qid和版本ID查询所有答案-->
+    <select id="selectAnswerByqid" resultType="Answer">
+        select * from answer where qid=#{qid} and vid=#{vid}
+    </select>
+
+    <!--4.根据答案anId查询所有评论-->
+    <select id="selectCommentByAnId" resultType="Comment" parameterType="java.lang.Integer">
+        select * from comment where aid=#{aid}
+    </select>
+    <!--5.根据答案anId查询所有的回复-->
+    <select id="selectReplyByAnId" resultType="Reply" parameterType="java.lang.Integer">
+        select * from reply where aid=#{aid}
+    </select>
+    <!--6.增加评论-->
+    <insert id="addComment" parameterType="Comment" keyProperty="cid" useGeneratedKeys="true">
+        insert into comment values(null,#{uName},now(),#{aid},#{commentContent},#{qid})
+    </insert>
+    <!--7.删除评论-->
+    <delete id="deleteComment" parameterType="java.lang.Integer">
+        delete from comment where cid=#{cid}
+    </delete>
+    <!--8.增加回复-->
+    <insert id="addReply" parameterType="Reply" keyProperty="rid" useGeneratedKeys="true">
+        insert into reply values(null,#{fromuName},#{touName},#{replyContent},now(),#{aid},#{qid})
+    </insert>
+   <!-- 9.删除回复-->
+    <delete id="deleteReply" parameterType="java.lang.Integer">
+        delete from reply where rid=#{rid}
+    </delete>
+    <!--10.根据aid,找对应的版本号-->
+    <select id="selectVidByAid" parameterType="java.lang.Integer" >
+       select vid from answer where a.aid=#{aid}
+    </select>
+</mapper>

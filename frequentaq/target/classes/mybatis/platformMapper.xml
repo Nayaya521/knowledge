@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.IPlatFormDao">
+    <!--1.增加平台模块-->
+    <insert id="addPlatform" useGeneratedKeys="true" keyProperty="pid">
+        insert into platform values (null,#{pName})
+    </insert>
+    <!--2.查看平台模块-->
+    <select id="selectPlatForm" resultType="Platform">
+        select * from platform;
+    </select>
+    <!-- 3.根据平台模块名字，删除平台模块-->
+    <delete id="deletPlatformByPName" parameterType="java.lang.String">
+        delete from platform where pname=#{pName}
+    </delete>
+
+</mapper>

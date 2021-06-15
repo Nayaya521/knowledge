@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.IQuestionDao">
+    <!--1.查询所有的问题-->
+    <select id="selectAllQuestion" resultType="Question">
+        select * from question
+    </select>
+    <!--3.添加一条问题-->
+    <insert id="addQuestion" parameterType="Question"  useGeneratedKeys="true" keyProperty="qid">
+        insert into question values (null,#{questionTitle},#{questionDesc},#{qType},#{platformName},#{questionTags},#{uName},now())
+    </insert>
+    <!--4.根据qid查询一条问题-->
+    <select id="selectQuestionByqid" parameterType="java.lang.Integer" resultType="Question">
+        select * from question where qid=#{qid}
+    </select>
+    <!--5.根据qid删除一条问题-->
+    <delete id="deleteQuestion">
+        delete from question where qid=#{qid}
+    </delete>
+    <!--6.修改一条问题-->
+    <update id="updateQUestion" parameterType="Question">
+        update question set questiontitle=#{questionTitle},questiondesc=#{questionDesc},questiontags=#{questionTags},platformname=#{platformName},questiontime=now() where qid=#{qid}
+    </update>
+    <!--7.根据questionTitle查询问题 以后要使用es-->
+    <select id="selectQuestionsbyTitle" resultType="Question" parameterType="java.lang.String">
+        select * from question where questiontitle=#{questionTitle}
+    </select>
+    <!--8.根据标签查询问题-->
+    <select id="selectQuestionsByTag" resultType="Question" parameterType="java.lang.String">
+        select * from  question where questiontags like CONCAT('%',#{tag},'%');
+    </select>
+    <!--9.根据用户选取-->
+    <select id="selectQuestionsByCommiter" resultType="Question" parameterType="java.lang.String">
+        select * from question where uname=#{uName}
+    </select>
+    <!--10.根据年选择问题-->
+    <select id="selectQuestionsByYear" resultType="Question" parameterType="java.lang.Integer">
+        select * from question where year(questiontime)=#{year};
+    </select>
+    <!--11.根据月份选择问题-->
+    <select id="selectQuestionsByMonth" resultType="Question" parameterType="java.lang.Integer">
+        select * from question where month (questiontime)=#{month}
+    </select>
+    <!--12.根据平台名称查询问题-->
+    <select id="selectQuestionsByPN" resultType="Question" parameterType="java.lang.String">
+        select * from question where platformname=#{platformName}
+    </select>
+    <!--13.根据年月查询问题-->
+    <select id="selectQuestionsByYM" resultType="Question">
+        select * from question where month (questiontime)=#{month} and year(questiontime)=#{year}
+    </select>
+    <!--14.根据年选择问题和平台名称查询问题-->
+    <select id="selectQuestionsByYP" resultType="Question">
+        select * from question where year(questiontime)=#{year} and platformname=#{platformName}
+    </select>
+    <!--15.根据月选择问题和平台名称查询问题-->
+    <select id="selectQuestionsByMP" resultType="Question">
+        select * from question where month (questiontime)=#{month} and platformname=#{platformName}
+    </select>
+    <!--16.根据年月和平台名称查询问题-->
+    <select id="selectQuestionsByYMP" resultType="Question">
+        select * from question where year(questiontime)=#{year} and month (questiontime)=#{month} and platformname=#{platformName}
+    </select>
+    <!--17.根据问题的Id找问题的title-->
+    <select id="selectQuesionTitleByqid" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select questiontitle from question where qid=#{qid}
+    </select>
+    <!--18.根据用户和问题的title找问题，确保添加的时候，不会重复添加-->
+    <select id="selectQuestionByuNameTitle" resultType="java.lang.Integer">
+        select COALESCE(sum(qid),0) as qid from question where questiontitle=#{questionTitle} and uname=#{uName};
+    </select>
+</mapper>

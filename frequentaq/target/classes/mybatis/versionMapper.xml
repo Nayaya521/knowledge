@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.IVersionDao">
+    <select id="selectVersion" resultType="Version">
+        select * from version where vid in (
+        select vid version where majorversion &lt; #{majorVersion} or majorversion= #{majorVersion} and secondversion &lt; #{secondVersion} or majorversion=#{majorVersion} AND secondversion=#{secondVersion} and fixedversion &lt;=#{fixedVersion})
+    </select>
+    <insert id="addVersion" parameterType="Version" useGeneratedKeys="true" keyProperty="vid">
+        insert into version(
+            majorversion,secondversion,fixedversion
+                <if test="greekVersion!=null">
+                    ,greekversion
+                </if>
+            )values (#{majorVersion},#{secondVersion},#{fixedVersion}
+        <if test="greekVersion!=null">
+            ,#{greekVersion}
+        </if>
+        )
+    </insert>
+    <delete id="deleteVersion" parameterType="java.lang.Integer">
+        delete from version where vid=#{vid};
+    </delete>
+    <update id="updateVersion" parameterType="Version">
+        update version
+        <set>
+            majorversion=#{majorVersion},secondversion=#{secondVersion},fixedversion=#{fixedVersion}
+            <if test="greekVersion !=null">,greekversion=#{greekVersion},</if>
+        </set>
+            where vid=#{vid}
+    </update>
+    <delete id="deteleBathVersion" parameterType="java.util.List" >
+        delete from version where vid in
+        <foreach collection="vids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <select id="selectIdByVersion" parameterType="Version" resultType="java.lang.Integer">
+        select COALESCE(sum(vid),0) as vid from version where majorversion=#{majorVersion} and secondversion=#{secondVersion} and fixedversion=#{fixedVersion}
+        <if test="greekVersion!=null">
+            and greekversion=#{greekVersion}
+        </if>
+    </select>
+</mapper>

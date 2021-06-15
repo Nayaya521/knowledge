@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.PlatformDao">
+     <insert id="add" parameterType="com.yss.pojo.PlatformBean" keyProperty="id" useGeneratedKeys="true">
+         insert into platformdoc (version,platformtype,question,answer)
+         values (#{version},#{platformType},#{question},#{answer})
+     </insert>
+    <delete id="delete">
+        delete from platformdoc where version=#{version} and platformtype=#{platformType} and question=#{question}
+    </delete>
+    <select id="findByQuestion" resultType="com.yss.pojo.PlatformBean">
+        select * from platformdoc where version=#{version} and platformtype=#{platformType} and question=#{question}
+    </select>
+    <resultMap id="findByVesionResult" type="com.yss.pojo.PlatformBean">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="platformtype" property="platformType"/>
+        <result column="question" property="question"/>
+        <result column="answer" property="answer"/>
+    </resultMap>
+    <select id="findByVesion" parameterType="java.lang.String" resultMap="findByVesionResult">
+        select * from platformdoc where version=#{version}
+    </select>
+    <select id="findByPlatform" parameterType="java.lang.String" resultMap="findByVesionResult">
+        select * from platformdoc where platformtype=#{platformType}
+    </select>
+    <select id="findByPlatVersion" resultMap="findByVesionResult">
+        select * from platformdoc where platformtype=#{platformType} and version=#{version}
+    </select>
+    <select id="selectAll" resultMap="findByVesionResult">
+        select * from platformdoc
+    </select>
+    <select id="findIdByPlatForm" parameterType="com.yss.pojo.PlatformBean" resultType="java.lang.Integer">
+        select id from platformdoc where version=#{version} and platformtype=#{platformType} and question=#{question}
+    </select>
+    <update id="findPlatformById" parameterType="com.yss.pojo.PlatformBean">
+        update  platformdoc set version=#{version},platformtype=#{platformType},question=#{question},answer=#{answer} where id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,36 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: frequentaq
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.252.133:3306/knowledge?characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  data:
+#    elasticsearch:
+#      cluster-nodes: 192.168.252.130:9300,192.168.252.132:9300,192.168.252.133:9300
+#      cluster-name: my-es
+mybatis:
+  type-aliases-package: com.yss.pojo   #   别名
+  mapper-locations: classpath:/mybatis/*.xml   #   xml文件
+
+elasticsearch:
+  started: true
+  index:
+    shards: 3
+    replicas: 2
+    question:
+      name: question
+      type: _doc
+    answer:
+      name: answer
+      type: _doc
+    comment:
+      name: comment
+      type: _doc
+    reply:
+      name: reply
+      type: _doc

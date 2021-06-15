@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/elasticsearch/elasticsearch.iml" filepath="$PROJECT_DIR$/elasticsearch/elasticsearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frequentaq/frequentaq.iml" filepath="$PROJECT_DIR$/frequentaq/frequentaq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowledge.iml" filepath="$PROJECT_DIR$/knowledge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platform/platform.iml" filepath="$PROJECT_DIR$/platform/platform.iml" />
+    </modules>
+  </component>
+</project>

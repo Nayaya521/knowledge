@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.IQuestionDao">
+    <!--1.查询所有的问题-->
+    <select id="selectAll" resultType="java.util.HashMap">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from question
+    </select>
+    <!--2.根据输入关键字对title和desc和标签,答案查询-->
+    <select id="selectByKeyWord" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from  question where questionTitle like CONCAT('%',#{keyWord},'%') or questionDesc like CONCAT('%',#{keyWord},'%')
+    </select>
+    <!-- 3.根据平台名称查询问题-->
+    <select id="selectByPlatform" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from question where platformName=#{platformname}
+    </select>
+    <!-- 4.根据用户名查询发表的问题-->
+    <select id="selectQuestionByUserName" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from question where questionerName=#{questionername}
+    </select>
+    <!--5.自动补充-->
+    <select id="completion" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select questionTitle from question where questionTitle like CONCAT(#{prefix},'%')
+    </select>
+    <!--6.根据qid查找整个文档-->
+    <select id="selectByQid" parameterType="java.lang.Long" resultType="java.util.HashMap">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from question where qid=#{qid}
+    </select>
+   <!-- 7.增加一条问题文档-->
+    <insert id="createQuestionDoc" parameterType="Question"  useGeneratedKeys="true" keyProperty="qid">
+        insert into question values (null,#{questionTitle},#{questionDesc},#{qType},#{platformName},#{questionTags},#{questionerName},now(),#{questionFileUuid})
+    </insert>
+   <!-- 8.删除一条问题文档-->
+    <delete id="deleteQuestionDoc" parameterType="java.lang.Integer">
+        delete from question where qid=#{qid}
+    </delete>
+  <!-- 9.修改一条问题文档-->
+    <update id="updateQuestionDoc" parameterType="Question">
+        update question set questionTitle=#{questionTitle},questionDesc=#{questionDesc},questionTags=#{questionTags},platformName=#{platformName},questionTime=now() where qid=#{qid}
+    </update>
+   <!--10.根据时间范围来查询,年份-->
+    <select id="selectByYear" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from question where year(questionTime)=#{yearNum};
+    </select>
+   <!-- 11.根据时间范围来查询,月份-->
+    <select id="selectByMonth" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from question where month (questionTime)=#{monthNum}
+    </select>
+
+    <!--public List<Platform> selectAllPlatform()-->
+    <select id="selectAllPlatform" resultType="Platform">
+        select qid,questionTitle,questionDesc,qType,platformName,questionTags,questionerName,DATE_FORMAT(questionTime,'%Y-%m-%d %H:%i:%s')as questionTime,questionFileUuid from platform;
+    </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yss.dao.IUserInfoDao">
+    <!--1.根据用户查找所有的评论-->
+    <select id="selectCommentByuName" resultType="UserResult">
+        select c.commentcontent content ,c.aid aid,c.commenttime datetime,q.uname questioner,q.questiontitle questionTitle from comment c left join question q on c.qid=q.qid where c.uname=#{uName}
+    </select>
+    <!--2.根据用户查找所有的回复-->
+    <select id="selectReplyByuName" resultType="UserResult">
+        select r.replycontent content,r.aid aid,r.replytime datetime,q.uname questioner,q.questiontitle questionTitle from reply r left join question q on r.qid=q.qid where r.fromuname=#{uName}
+    </select>
+    <!--3.根据用户查找用户的回答-->
+    <select id="selectAnswerByuName" resultType="UserResult">
+        select a.answercontent content,aid,a.answertime datetime,q.uname questioner,q.questiontitle questionTitle from answer a left join question q on a.qid=q.qid where a.uname=#{uName}
+    </select>
+</mapper>

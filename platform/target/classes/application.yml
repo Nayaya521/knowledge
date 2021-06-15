@@ -1,0 +1,34 @@
+# 应用名称
+spring:
+  application:
+    name: platform
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/knowledgerepository?characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+ #应用服务 WEB 访问端口
+server:
+  port: 8080
+
+mybatis:
+  type-aliases-package: com.yss.pojo   #   别名
+  mapper-locations: classpath:/mybatis/*.xml   #   xml文件
+
+logging:
+  file:
+    name: log/log.log
+  level:
+    root: info
+    wuhobin: debug
+#ftp服务器的地址
+ftp:
+  host: 192.168.101.54
+  port: 21
+  username: mike
+  password: 123456
+  basePath: /opt
+  httpPath: ftp://192.168.101.54 #回显地址
+
+

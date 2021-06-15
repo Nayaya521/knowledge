@@ -1,0 +1,40 @@
+# 应用名称
+spring:
+  application:
+    name: frequentaq
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/knowledgerepository?characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #应用服务 WEB 访问端口
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.252.130:9300,192.168.252.132:9300,192.168.252.133:9300
+      cluster-name: my-es
+server:
+  port: 8080
+
+mybatis:
+  type-aliases-package: com.yss.pojo   #   别名
+  mapper-locations: classpath:/mybatis/*.xml   #   xml文件
+
+logging:
+  file:
+    name: log/log.log
+  level:
+    root: info
+    wuhobin: debug
+#ftp服务器的地址
+ftp:
+  host: 192.168.101.54
+  port: 21
+  username: mike
+  password: 123456
+  basePath: /opt
+  httpPath: ftp://192.168.101.54 #回显地址
+
+#系统当前的默认版本
+version:
+  current: 3.0.3.Rlease
