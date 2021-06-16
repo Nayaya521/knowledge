@@ -22,15 +22,15 @@ elasticsearch:
   index:
     shards: 3
     replicas: 2
-    question:
-      name: question
+    frequentAskedQuestion:
+      name: faq
       type: _doc
-    answer:
-      name: answer
-      type: _doc
-    comment:
-      name: comment
-      type: _doc
-    reply:
-      name: reply
-      type: _doc
+#    answer:
+#      name: answer
+#      type: _doc
+#    comment:
+#      name: comment
+#      type: _doc
+#    reply:
+#      name: reply
+#      type: _doc
