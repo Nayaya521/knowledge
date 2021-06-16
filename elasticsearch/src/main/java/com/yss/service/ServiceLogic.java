@@ -20,6 +20,10 @@ public class ServiceLogic {
     private EsAnswerServiceImpl esAnswerService;
     @Autowired
     private MysqlAnswerServiceImpl mysqlAnswerService;
+    @Autowired
+    private EsCommentServiceImpl esCommentService;
+    @Autowired
+    private MysqlCommentServiceImpl mysqlCommentService;
     public QuestionService getQuestionService(){
         if(isStarted.equals("true")){
             System.out.println("选用esQuestionService");
@@ -36,6 +40,15 @@ public class ServiceLogic {
         }else {
             System.out.println("选用mysqlAnswerService");
             return mysqlAnswerService;
+        }
+    }
+    public CommentService getCommentService(){
+        if(isStarted.equals("true")){
+            System.out.println("选用esCommentService");
+            return esCommentService;
+        }else {
+            System.out.println("选用mysqlCommentService");
+            return mysqlCommentService;
         }
     }
 
