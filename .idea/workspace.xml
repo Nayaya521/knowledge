@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a851b4b4-4069-48d6-8cd5-1d02892d0377" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/config/IndexCommandRunner2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/pojo/Faq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/EsFaqServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/FaqService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/MysqlFaqServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/controller/FaqController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/config/IndexCommandRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/config/IndexCommandRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/EsCommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/EsCommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/EsFaqServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/EsFaqServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/MysqlCommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/MysqlCommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/MysqlFaqServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/MysqlFaqServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/ServiceLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/src/main/java/com/yss/service/ServiceLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elasticsearch/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elasticsearch/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elasticsearch/target/classes/com/yss/config/IndexCommandRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/target/classes/com/yss/config/IndexCommandRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elasticsearch/target/classes/com/yss/service/ServiceLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/elasticsearch/target/classes/com/yss/service/ServiceLogic.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -387,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623808250007</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="更新Faq">
+      <created>1623814718064</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1623814718064</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,21 +405,22 @@
     <MESSAGE value="answer的es内容已经更新完毕" />
     <MESSAGE value="answer的内容已经更新完毕" />
     <MESSAGE value="继续更新question" />
-    <option name="LAST_COMMIT_MESSAGE" value="继续更新question" />
+    <MESSAGE value="更新Faq" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新Faq" />
   </component>
   <component name="WindowStateProjectService">
     <state x="228" y="0" key="#Project_Structure" timestamp="1621307624072">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
     <state x="228" y="0" key="#Project_Structure/0.0.1747.943@0.0.1747.943" timestamp="1621307624072" />
-    <state x="634" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1623814007994">
+    <state x="634" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1623814890831">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state x="634" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1747.943@0.0.1747.943" timestamp="1623814007994" />
-    <state x="582" y="298" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1623729060518">
+    <state x="634" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1747.943@0.0.1747.943" timestamp="1623814890831" />
+    <state x="582" y="298" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1623815257199">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state x="582" y="298" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1747.943@0.0.1747.943" timestamp="1623729060518" />
+    <state x="582" y="298" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1747.943@0.0.1747.943" timestamp="1623815257199" />
     <state x="332" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1622109251311">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
@@ -425,10 +433,10 @@
       <screen x="0" y="0" width="1747" height="943" />
     </state>
     <state x="571" y="0" width="678" height="943" key="#xdebugger.evaluate/0.0.1747.943@0.0.1747.943" timestamp="1623721953068" />
-    <state x="543" y="192" width="1129" height="709" key="CommitChangelistDialog2" timestamp="1623808249026">
+    <state x="543" y="192" width="1129" height="709" key="CommitChangelistDialog2" timestamp="1623814717195">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state x="543" y="192" width="1129" height="709" key="CommitChangelistDialog2/0.0.1747.943@0.0.1747.943" timestamp="1623808249026" />
+    <state x="543" y="192" width="1129" height="709" key="CommitChangelistDialog2/0.0.1747.943@0.0.1747.943" timestamp="1623814717195" />
     <state x="603" y="168" key="FileChooserDialogImpl" timestamp="1623746635467">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
@@ -441,22 +449,22 @@
       <screen x="0" y="0" width="1747" height="943" />
     </state>
     <state x="467" y="0" key="Github.UntrackedFilesDialog/0.0.1747.943@0.0.1747.943" timestamp="1623746882465" />
-    <state width="1695" height="252" key="GridCell.Tab.0.bottom" timestamp="1623761319372">
+    <state width="1695" height="404" key="GridCell.Tab.0.bottom" timestamp="1623820528640">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state width="1695" height="252" key="GridCell.Tab.0.bottom/0.0.1747.943@0.0.1747.943" timestamp="1623761319372" />
-    <state width="1695" height="252" key="GridCell.Tab.0.center" timestamp="1623761319372">
+    <state width="1695" height="404" key="GridCell.Tab.0.bottom/0.0.1747.943@0.0.1747.943" timestamp="1623820528640" />
+    <state width="1695" height="404" key="GridCell.Tab.0.center" timestamp="1623820528640">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state width="1695" height="252" key="GridCell.Tab.0.center/0.0.1747.943@0.0.1747.943" timestamp="1623761319372" />
-    <state width="1695" height="252" key="GridCell.Tab.0.left" timestamp="1623761319372">
+    <state width="1695" height="404" key="GridCell.Tab.0.center/0.0.1747.943@0.0.1747.943" timestamp="1623820528640" />
+    <state width="1695" height="404" key="GridCell.Tab.0.left" timestamp="1623820528640">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state width="1695" height="252" key="GridCell.Tab.0.left/0.0.1747.943@0.0.1747.943" timestamp="1623761319372" />
-    <state width="1695" height="252" key="GridCell.Tab.0.right" timestamp="1623761319372">
+    <state width="1695" height="404" key="GridCell.Tab.0.left/0.0.1747.943@0.0.1747.943" timestamp="1623820528640" />
+    <state width="1695" height="404" key="GridCell.Tab.0.right" timestamp="1623820528640">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state width="1695" height="252" key="GridCell.Tab.0.right/0.0.1747.943@0.0.1747.943" timestamp="1623761319372" />
+    <state width="1695" height="404" key="GridCell.Tab.0.right/0.0.1747.943@0.0.1747.943" timestamp="1623820528640" />
     <state width="1695" height="286" key="GridCell.Tab.1.bottom" timestamp="1623723353434">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
@@ -481,10 +489,10 @@
       <screen x="0" y="0" width="1747" height="943" />
     </state>
     <state x="228" y="0" width="1480" height="881" key="SettingsEditor/0.0.1747.943@0.0.1747.943" timestamp="1623746762095" />
-    <state x="368" y="135" key="Vcs.Push.Dialog.v2" timestamp="1623761318791">
+    <state x="368" y="135" key="Vcs.Push.Dialog.v2" timestamp="1623814728797">
       <screen x="0" y="0" width="1747" height="943" />
     </state>
-    <state x="368" y="135" key="Vcs.Push.Dialog.v2/0.0.1747.943@0.0.1747.943" timestamp="1623761318791" />
+    <state x="368" y="135" key="Vcs.Push.Dialog.v2/0.0.1747.943@0.0.1747.943" timestamp="1623814728797" />
     <state x="650" y="367" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623746667709">
       <screen x="0" y="0" width="1747" height="943" />
     </state>

@@ -18,19 +18,22 @@ mybatis:
   mapper-locations: classpath:/mybatis/*.xml   #   xml文件
 
 elasticsearch:
-  started: false
+  started: true
   index:
     shards: 3
     replicas: 2
     frequentAskedQuestion:
       name: faq
       type: _doc
-#    answer:
-#      name: answer
-#      type: _doc
-#    comment:
-#      name: comment
-#      type: _doc
-#    reply:
-#      name: reply
-#      type: _doc
+    question:
+      name: question
+      type: _doc
+    answer:
+      name: answer
+      type: _doc
+    comment:
+      name: comment
+      type: _doc
+    reply:
+      name: reply
+      type: _doc

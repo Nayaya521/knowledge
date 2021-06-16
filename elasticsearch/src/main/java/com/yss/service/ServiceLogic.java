@@ -13,6 +13,10 @@ public class ServiceLogic {
     @Value("${elasticsearch.started}")
     private String isStarted;
     @Autowired
+    private EsFaqServiceImpl esFaqService;
+    @Autowired
+    private MysqlFaqServiceImpl mysqlFaqService;
+    @Autowired
     private EsQuestionServiceImpl esQuestionService;
     @Autowired
     private MysqlQuestionServiceImpl mysqlQuestionService;
@@ -51,5 +55,13 @@ public class ServiceLogic {
             return mysqlCommentService;
         }
     }
-
+    public FaqService getFaqService(){
+        if(isStarted.equals("true")){
+            System.out.println("选用eesFaqService");
+            return esFaqService;
+        }else {
+            System.out.println("选用mysqlFaqService");
+            return mysqlFaqService;
+        }
+    }
 }

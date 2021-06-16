@@ -32,11 +32,13 @@ import org.elasticsearch.search.suggest.SuggestBuilders;
 import org.elasticsearch.search.suggest.SuggestionBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.*;
 
+@Service
 public class EsFaqServiceImpl implements FaqService {
     @Autowired
     private RestHighLevelClient restHighLevelClient;
@@ -161,7 +163,7 @@ public class EsFaqServiceImpl implements FaqService {
         highlightBuilder.field("questionTitle",10)
                 .preTags("<font color='red'>")
                 .postTags("</font>")
-                .field("answerContent",10)
+                .field("answerContent",30)
                 .preTags("<font color='red'>")
                 .postTags("</font>");
         builder.highlighter(highlightBuilder);
